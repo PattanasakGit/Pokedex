@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@app/store/store";
+import { useDispatch, useSelector } from "react-redux";
 import { setSearchQuery } from "@app/store/pokemonSlice";
 
 const Navbar = () => {

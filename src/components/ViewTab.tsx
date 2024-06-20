@@ -1,8 +1,8 @@
 "use client";
-import { getFilteredPokemonList } from "@app/store/pokemonSlice";
-import { RootState } from "@app/store/store";
 import React from "react";
 import { useSelector } from "react-redux";
+import { RootState } from "@app/store/store";
+import { getFilteredPokemonList } from "@app/store/pokemonSlice";
 
 const TabView = () => {
   const filteredPokemon = useSelector((state: RootState) =>

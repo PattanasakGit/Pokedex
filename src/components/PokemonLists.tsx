@@ -1,12 +1,15 @@
 "use client";
+import Image from "next/image";
 import React, { useEffect } from "react";
+import TagType from "@app/components/TagType";
+import TabView from "@app/components/ViewTab";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "@app/store/store";
-import { fetchPokemonListWithDetails, getFilteredPokemonList } from "@app/store/pokemonSlice";
-import Image from "next/image";
 import { IPokemonDetailResponse } from "@app/models/PokemonModel";
-import TagType from "./TagType";
-import TabView from "./ViewTab";
+import {
+  fetchPokemonListWithDetails,
+  getFilteredPokemonList,
+} from "@app/store/pokemonSlice";
 
 const PokemonList = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -24,11 +27,13 @@ const PokemonList = () => {
     console.log(pokemon);
   };
 
-  const filteredPokemon = useSelector((state: RootState) => getFilteredPokemonList(state));
+  const filteredPokemon = useSelector((state: RootState) =>
+    getFilteredPokemonList(state)
+  );
 
   return (
     <section className="">
-      <TabView/>
+      <TabView />
       <div className="grid grid-cols-4 gap-[46px] px-[150px] py-4">
         {filteredPokemon.map((pokemon) => (
           <div

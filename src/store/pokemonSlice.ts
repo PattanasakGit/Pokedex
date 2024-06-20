@@ -1,6 +1,5 @@
-// store/pokemonSlice.ts
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import pokemonDexService from '@app/services/PokemonDexService';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { IPokemonListResponse, IPokemonDetailResponse } from '@app/models/PokemonModel';
 
 interface PokemonState {
