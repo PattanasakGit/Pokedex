@@ -1,11 +1,15 @@
-import pokemonReducer from './pokemonSlice';
-import { configureStore } from '@reduxjs/toolkit';
-import filteredPokemonReducer from './filteredPokemonSlice';
+import viewReducer from "@app/store/viewSlice";
+import { configureStore } from "@reduxjs/toolkit";
+import pokemonReducer from "@app/store/pokemonSlice";
+import filteredPokemonReducer from "@app/store/filteredPokemonSlice";
+import pagemanagerSlice from "./pagemanagerSlice";
 
 const store = configureStore({
   reducer: {
     pokemon: pokemonReducer,
     filteredPokemon: filteredPokemonReducer,
+    view: viewReducer,
+    pagemanagerSlice:pagemanagerSlice,
   },
 });
 

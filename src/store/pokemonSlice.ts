@@ -4,6 +4,8 @@ import { IPokemonListResponse, IPokemonDetailResponse } from '@app/models/Pokemo
 
 interface PokemonState {
   list: IPokemonDetailResponse[];
+  selected: IPokemonDetailResponse,
+  pokemonInPocket: { pokemon: IPokemonDetailResponse; quantity: number }[];
   searchQuery: string;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
@@ -12,8 +14,25 @@ interface PokemonState {
 const initialState: PokemonState = {
   list: [],
   searchQuery: '',
+  pokemonInPocket: [],
   status: 'idle',
   error: null,
+  selected: {
+    id: 0,
+    name: '',
+    base_experience: 0,
+    height: 0,
+    weight: 0,
+    sprites: {
+      front_default: '',
+      back_default: '',
+      front_shiny: '',
+      back_shiny: ''
+    },
+    types: [],
+    abilities: [],
+    stats: [],
+  },
 };
 
 export const fetchPokemonListWithDetails = createAsyncThunk(
@@ -32,7 +51,30 @@ const pokemonSlice = createSlice({
     setSearchQuery: (state, action: PayloadAction<string>) => {
       state.searchQuery = action.payload;
     },
+    setSelectedPokemon(state, action: PayloadAction<IPokemonDetailResponse>) {
+      state.selected = action.payload;
+    },
+    addPokemonToPocket: (state, action: PayloadAction<{ pokemon: IPokemonDetailResponse; quantity: number }>) => {
+      const existingIndex = state.pokemonInPocket.findIndex(
+        item => item.pokemon.id === action.payload.pokemon.id
+      );
+
+      if (existingIndex >= 0) {
+        // Update quantity if Pokémon already exists in the pocket
+        state.pokemonInPocket[existingIndex].quantity += action.payload.quantity;
+      } else {
+        // Add new Pokémon to the pocket
+        state.pokemonInPocket.push(action.payload);
+      }
+    },
+    removePokemonFromPocket: (state, action: PayloadAction<IPokemonDetailResponse>) => {
+      const index = state.pokemonInPocket.findIndex(item => item.pokemon.id === action.payload.id);
+      if (index !== -1) {
+        state.pokemonInPocket.splice(index, 1); // Remove the item from array
+      }
+    },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchPokemonListWithDetails.pending, (state) => {
@@ -49,7 +91,7 @@ const pokemonSlice = createSlice({
   },
 });
 
-export const { setSearchQuery } = pokemonSlice.actions;
+export const { setSearchQuery, setSelectedPokemon, addPokemonToPocket , removePokemonFromPocket} = pokemonSlice.actions;
 
 export default pokemonSlice.reducer;
 
