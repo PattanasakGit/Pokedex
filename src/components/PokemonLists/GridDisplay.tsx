@@ -14,8 +14,8 @@ const GridDisplay: React.FC<GridDisplayProps> = ({
   onClick: onPokemonClick,
 }) => {
   return (
-    <div className="max-w-[1440px] mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[2.875rem] px-4 sm:px-[9.375rem] py-4">
+    <div className="max-w-[1440px] mx-auto min-h-[calc(100vh-190px)]">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[2.875rem] px-4 sm:px-[9.375rem] py-4">
         {pokemons.map((pokemon) => (
           <div
             key={pokemon.name}

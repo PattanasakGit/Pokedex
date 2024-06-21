@@ -43,7 +43,7 @@ const PokemonDetail: React.FC = () => {
         <img src="/icons/back.svg" />
         Back
       </button>
-      <div className="flex flex-col lg:flex-row bg-white px-[14px] py-[16px] rounded-lg shadow-md w-full h-[385px]">
+      <div className="flex flex-row bg-white px-[14px] py-[16px] rounded-lg shadow-md w-full h-[385px]">
         <div className="flex items-center justify-center ">
           <Image
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}

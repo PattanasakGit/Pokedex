@@ -14,7 +14,7 @@ const ListDisplay: React.FC<ListDisplayProps> = ({
   onClick: onPokemonClick,
 }) => {
   return (
-    <div className="list px-[150px] py-4 ">
+    <div className="list px-[150px] py-4 min-h-[calc(100vh-190px)]">
       {pokemons.map((pokemon) => (
         <div
           key={pokemon.name}
