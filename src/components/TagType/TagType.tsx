@@ -11,7 +11,7 @@ const TagType: React.FC<TagTypeProps> = ({ type }) => {
       {type.map((typeName, index) => (
         <div
           key={index}
-          className="bg-[#FFF4E3] rounded-[8px] px-[8px] py-[4px] text-[#FFAE33] font-bold text-[12px]"
+          className="bg-[#bbd1b573] border rounded-[8px] px-[8px] py-[4px] text-[#1f733a] font-bold text-[12px]"
         >
           {typeName}
         </div>
